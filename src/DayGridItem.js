@@ -138,7 +138,7 @@ export class DayGridItem extends LitElement {
     const date = new Date(this.date)
     // TODO: Check for Intl.Locale polyfill
     const locale = new Intl.Locale(this.lang)
-    const firstDayOfWeek = locale?.weekInfo.firstDay ?? 0
+    const firstDayOfWeek = locale?.getWeekInfo().firstDay ?? 0
     return (date.getDay() || 7) === firstDayOfWeek
   }
 
@@ -151,7 +151,7 @@ export class DayGridItem extends LitElement {
     const date = new Date(this.date)
     // TODO: Check for Intl.Locale polyfill
     const locale = new Intl.Locale(this.lang)
-    const firstDayOfWeek = locale?.weekInfo.firstDay ?? 0
+    const firstDayOfWeek = locale?.getWeekInfo().firstDay ?? 0
     return (date.getDay() || 7) === (firstDayOfWeek + 6) % 7
   }
 
@@ -164,7 +164,7 @@ export class DayGridItem extends LitElement {
     const date = new Date(this.date)
     // TODO: Check for Intl.Locale polyfill
     const locale = new Intl.Locale(this.lang)
-    return locale?.weekInfo?.weekend.includes(date.getDay() || 7) ?? false
+    return locale?.getWeekInfo()?.weekend.includes(date.getDay() || 7) ?? false
   }
 
   /**
